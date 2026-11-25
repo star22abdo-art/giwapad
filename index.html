@@ -5,10 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GiwaPad - Launchpad browser for Ammora on GIWA</title>
 <meta name="description" content="Browse every token launched through the Ammora protocol on GIWA Sepolia: live curve reserves, graduation progress and exact pool quotes, read on-chain with @ammora-protocol/sdk.">
+<link rel="stylesheet" href="./bundle.css">
 </head>
 <body>
 <div id="root"></div>
-<link rel="stylesheet" href="./bundle.css">
-<script type="module" src="./bundle.js"></script>
+<script>
+Promise.all(['part1.txt','part2.txt','part3.txt'].map(function(p){return fetch(p).then(function(r){return r.text();});})).then(function(a){
+  var u=URL.createObjectURL(new Blob([a.join('')],{type:'text/javascript'}));
+  var s=document.createElement('script');s.type='module';s.src=u;document.body.appendChild(s);
+});
+</script>
 </body>
 </html>
