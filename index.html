@@ -11,7 +11,7 @@
 <div id="root"></div>
 <script>
 Promise.all(['part1.txt','part2.txt','part3.txt'].map(function(p){return fetch(p).then(function(r){return r.text();});})).then(function(a){
-  var u=URL.createObjectURL(new Blob([a.join('')],{type:'text/javascript'}));
+  var u=URL.createObjectURL(new Blob([a.map(function(t,i){return i<2?t.replace(/\n$/,''):t;}).join('')],{type:'text/javascript'}));
   var s=document.createElement('script');s.type='module';s.src=u;document.body.appendChild(s);
 });
 </script>
